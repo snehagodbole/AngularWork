@@ -1,0 +1,28 @@
+<div class="row">
+      <div class="col-md-4">
+        <input type="text" style="width: 100%;height: 40px;" placeholder="Search your favourite movie from here" ng-model="searchStr" class="ng-pristine ng-untouched ng-valid">
+
+      </div>
+      <div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-body" style="height:550px;overflow:hidden">
+   
+    <div class="row">
+      <label class="col-md-8">Rank &amp; Title</label>
+      <label class="col-md-4">Rating</label>
+    </div>
+        <div ng-repeat="val in newData | filter:searchStr | limitTo:20 " class="row ng-scope">
+        <a ng-href="{{val.movie_link}}" style="cursor:pointer" title="click to see more" target="_blank" class="col-md-8">{{$index+1}}: {{val.movie_name}}</a>
+          <label class="col-md-4 ng-binding">{{val.rate}}</label>
+        </div>
+        </div>
+   </div> 
+  </div>
+ </div> 
+<div class="row">
+  <ul class="pagination">
+    <li ng-show="index>0" ng-click="getPrevPages()"><a href="#">«</a></li>
+    <!-- ngRepeat: a in getNumber(1) track by $index --><li ng-show="numberOfPages>0" ng-class="{active:isActive($index)}" ng-click="getNewData($index)" ng-repeat="a in getNumber(1) track by $index" class="ng-scope active"><a href="#" class="ng-binding">1</a></li><!-- end ngRepeat: a in getNumber(1) track by $index -->
+    <li ng-show="numberOfPages>0" ng-click="getNextPages()" class=""><a href="#">»</a></li>
+  </ul>
+</div>

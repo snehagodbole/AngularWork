@@ -1,0 +1,19 @@
+/* Styles go here */
+.panel-body{
+    height: 600px;
+}
+.panel-body li{
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+.pagination{
+    margin:0px ! important;
+}
+.modal-body input{
+    height: 40px;
+    width: 100%;
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;}

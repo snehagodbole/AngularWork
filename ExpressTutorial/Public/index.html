@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html ng-app="angularProject">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-state=1" />
+  <script data-require="angular.js@*" data-semver="1.3.15" src="https://code.angularjs.org/1.3.15/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <script src="home-page-directive.js"></script>
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <section class="tab" ng-controller="TabController">
+
+      <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+          <li ng-class="{active:isSet(1)}">
+            <a ng-click="setTab(1)" href>Home</a></li>
+          <li ng-class="{active:isSet(2)}">
+            <a ng-click="setTab(2)" href>Movie Search</a></li>
+          <li ng-class="{active:isSet(3)}">
+            <a ng-click="setTab(3)" href>Dashboard</a></li>
+
+        </ul>
+      </nav>
+      <div ng-show="isSet(1)">
+        <home-page-directive></home-page-directive>
+      </div>
+
+
+
+      <div ng-show="isSet(2)" class="row">
+       
+        <div class="col-md-10">
+          <my-list-directive></my-list-directive>
+        </div>
+      </div>
+      <div ng-show="isSet(3)" class="row">
+        <div class="col-md-12">
+          Coming soon.........
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+</body>
+
+</html>
