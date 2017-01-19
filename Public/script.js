@@ -18,19 +18,14 @@ app.controller("TabController", function ($scope) {
   $scope.isSet = function (tabName) {
     return $scope.tab === tabName;
   };
-  $scope.dropdown_click = function (val) {
-    console.log(val);
-
-  }
-
-});
+ });
 
 
 app.directive("myListDirective", function ($http) {
   return {
     restrict: "AE",
     templateUrl: "my-list-directive.html",
-    controller: function ($scope, $http) {
+    controller: function ($scope, $http,$filter) {
       $scope.data = {};
       $scope.pageEntry = 0;
       $scope.flag = [];
@@ -52,15 +47,13 @@ app.directive("myListDirective", function ($http) {
         $scope.index = $scope.index - 1;
         $scope.getNewData($scope.index, 0);
       };
-
+      
       $scope.getNextPages = function () {
-        console.log($scope.index)
-        $scope.index = $scope.index + 1;
+                $scope.index = $scope.index + 1;
         $scope.getNewData($scope.index, 0);
       };
       $scope.getNewData = function (startIndex, newIndex) {
         $scope.recordIndex = startIndex;
-        console.log("in new data index", startIndex, newIndex)
         $scope.pageEntry = startIndex * 20;
         if (newIndex == 0) {
           $scope.number_of_list = newIndex * $scope.pageEntry;
@@ -70,7 +63,6 @@ app.directive("myListDirective", function ($http) {
 
           $scope.number_of_list = $scope.index * $scope.pageEntry;
         $scope.newData = $scope.data.slice($scope.pageEntry);
-        console.log("index", $scope.pageEntry, $scope.index)
         if (newIndex == 0)
           $scope.activePage = newIndex;
         else
@@ -120,7 +112,6 @@ app.directive("myListDirective", function ($http) {
         method: "GET",
         url: "/moviedata"
       }).then(function mySucces(response) {
-        console.log(response.data);
         $scope.data = response.data;
         $scope.calculateRating();
         $scope.numberOfPages = parseInt(($scope.data.length % $scope.pageEntry) == 0 ? $scope.data.length / 20 : $scope.data.length / 20 + 1);

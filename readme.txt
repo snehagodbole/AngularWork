@@ -6,3 +6,5 @@ npm install express
 npm install body-parser
 5.start node by running server.js script
 node server
+
+On Browser Type localhost:3000
